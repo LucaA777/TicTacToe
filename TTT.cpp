@@ -41,7 +41,8 @@ int main() {
       do {
 	cout << "Enter the coordinate for your move:" << endl;
 	cin.get(input, 3);
-	cin.get();
+	cin.clear();
+	cin.ignore(10000, '\n');
       } while (!isValidInput(input, board));
 
       //plays the move onto the board
@@ -65,6 +66,8 @@ int main() {
       cout << endl << "Tie." << endl;
     }
 
+    cout << "X has " << xWins << " win" << (xWins == 1 ? "." : "s.") << endl;
+    cout << "O has " << oWins << " win" << (oWins == 1 ? "." : "s.") << endl;
     cout << endl << endl;
  
   }
@@ -118,7 +121,7 @@ char checkMatchEnd(char board[3][3]) {
   else if (board[0][0] != ' ' && board[0][0] == board[1][0] && board[1][0] == board[2][0]) {
     return board[0][0];
   }
-  else if (board[0][1] != ' ' && board[0][1] == board[1][1] && board[1][1] == board[1][2]) {
+  else if (board[0][1] != ' ' && board[0][1] == board[1][1] && board[1][1] == board[2][1]) {
     return board[0][1];
   }
   else if (board[0][2] != ' ' && board[0][2] == board[1][2] && board[1][2] == board[2][2]) {
