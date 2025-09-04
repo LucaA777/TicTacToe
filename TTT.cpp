@@ -1,3 +1,11 @@
+/*
+Simple 2-player TicTacToe game. Players take turns entering the coordinates for their moves.
+The game plays multiple rounds and keeps score across them.
+
+Author: Luca Ardanaz
+Last Updated: 9/4/2025
+ */
+
 #include <iostream>
 #include <cstring>
 
@@ -33,7 +41,6 @@ int main() {
     while (checkMatchEnd(board) == 'F') { 
 
       //get player input
-      //No, I didn't use AI, I just learned shorthand if-else on my own. 
       cout << endl << "It is " << (xTurn ? "X" : "O") << "'s turn." << endl;
 
       //asks repeatedly until the user enters a valid coordinate
@@ -66,6 +73,7 @@ int main() {
       cout << endl << "Tie." << endl;
     }
 
+    //show win totals
     cout << "X has " << xWins << " win" << (xWins == 1 ? "." : "s.") << endl;
     cout << "O has " << oWins << " win" << (oWins == 1 ? "." : "s.") << endl;
     cout << endl << endl;
@@ -110,7 +118,7 @@ bool isValidInput(char input[3], char board[3][3]) {
 char checkMatchEnd(char board[3][3]) {
   //checks all win conditions
   if (board[0][0] != ' ' && board[0][0] == board[0][1] && board[0][1] == board[0][2]) {
-    return board[0][0];
+    return board[0][0]; //returns the player that made the row
   }
   else if (board[1][0] != ' ' && board[1][0] == board[1][1] && board[1][1] == board[1][2]) {
     return board[1][0];
